@@ -1,0 +1,67 @@
+[
+    {
+        "uuid": "0000000001",
+        "title": "Test Title 1",
+        "author": "Test Author 1",
+        "genre": "Genre 1",
+        "editorial": "edit 1",
+        "bookId": "000001",
+        "internalId": "A"
+    },
+    {
+        "uuid": "0000000002",
+        "title": "Test Title 2",
+        "author": "Test Author 2",
+        "genre": "Genre 1",
+        "editorial": "edit 1",
+        "bookId": "000002"
+    },
+    {
+        "uuid": "0000000003",
+        "title": "Test Title 3",
+        "author": "Test Author 3",
+        "genre": "Genre 2",
+        "editorial": "edit 2",
+        "bookId": "000003"
+    },
+    {
+        "uuid": "0000000004",
+        "title": "Test Title 4",
+        "author": "Test Author 4",
+        "genre": "Genre 3",
+        "editorial": "edit 3",
+        "bookId": "000003",
+        "internalId": "B"
+    },
+    {
+        "uuid": "0000000005",
+        "title": "Test Title 5",
+        "author": "Test Author 5",
+        "genre": "Genre 2",
+        "editorial": "edit 4",
+        "bookId": "000004"
+    },
+    {
+        "uuid": "0000000006",
+        "title": "Test Title 6",
+        "author": "Test Author 1",
+        "genre": "Genre 4",
+        "editorial": "edit 2"
+    },
+    {
+        "uuid": "0000000007",
+        "title": "Test Title 6",
+        "author": "Test Author 1",
+        "genre": "Genre 4",
+        "bookId": "000005",
+        "internalId": "C"
+    },
+    {
+        "uuid": "0000000008",
+        "title": "Test Title 7",
+        "author": "Test Author 1",
+        "genre": "Genre 4",
+        "bookId": "000005",
+        "internalId": "C"
+    }
+]

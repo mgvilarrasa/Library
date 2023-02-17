@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+
+    .header-title, .header-author, .header-genre, .header-editorial, .header-bookId, 
+    .header-internalId, .header-details, .header-update, .header-delete{
+        font-size: 22px;
+        font-weight: 900;
+    }
+
+}
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+}
+
+.filter-label{
+    margin-left: 1rem;
+    font-size: 24px;
+    font-weight: 600;
+}
