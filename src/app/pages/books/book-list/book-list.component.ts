@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Book } from 'src/app/entities/Book';
 import { BooksService } from 'src/app/services/books.service';
 import { BookDetailComponent } from '../book-detail/book-detail.component';
+import { BookUpdateComponent } from '../book-update/book-update.component';
 
 @Component({
   selector: 'app-book-list',
@@ -62,8 +63,21 @@ export class BookListComponent implements OnInit, AfterViewInit {
 
     this.dialog.open(BookDetailComponent, dialogConfig);
   }
-  public bookUpdate(uuid: string) {
-    
+  public bookUpdate(item: Book) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { 
+      uuid: item.uuid,
+      title: item.title,
+      author: item.author,
+      genre: item.genre,
+      editorial: item.editorial,
+      bookId: item.bookId,
+      internalId: item.internalId
+    };
+
+    dialogConfig.width = '500px';
+
+    this.dialog.open(BookUpdateComponent, dialogConfig);
   }
   public bookDelete(uuid: string) {
     

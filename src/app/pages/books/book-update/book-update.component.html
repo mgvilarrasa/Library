@@ -1,1 +1,77 @@
-<p>book-update works!</p>
+<div class="dialog">
+    <h1 mat-dialog-title>Update Book: {{book.title}}</h1>
+    <mat-dialog-content class="dialog-content">
+        <form [formGroup]="bookForm" (ngSubmit)="save()">
+            <div class="data-row">
+                <div>
+                    <label class="label">Title:(*)</label>
+                </div>
+                <input 
+                    id="title" type="text" formControlName="title" 
+                    class="content" placeholder="Title"
+                >
+                <div>
+                    <span class="text-danger"
+                            *ngIf="(bookFormControl.title.touched || submitted) && bookFormControl.title.errors">
+                        Title is required
+                    </span>
+                </div> 
+            </div>
+            <div class="data-row">
+                <div>
+                    <label class="label">Author:(*)</label>
+                </div> 
+                <input id="author" type="text" formControlName="author"
+                    class="content" placeholder="Author"
+                >
+                <div>
+                    <span class="text-danger"
+                            *ngIf="(bookFormControl.author.touched || submitted) && bookFormControl.author.errors">
+                        Author is required
+                    </span>
+                </div>
+            </div>
+            <div class="data-row">
+                <div>
+                    <label class="label">Genre:</label>
+                </div>
+                <input id="genre" type="text" formControlName="genre"
+                    class="content" placeholder="Genre"
+                >
+            </div>
+            <div class="data-row">
+                <div>
+                    <label class="label">Editorial:</label>
+                </div>
+                <input id="editorial" type="text" formControlName="editorial"
+                    class="content" placeholder="Editorial"
+                >
+            </div>
+            <div class="data-row">
+                <div>
+                    <label class="label">Book ID:</label>
+                </div>
+                <input id="bookId" type="text" formControlName="bookId"
+                    class="content" placeholder="Book ID"
+                >
+            </div>
+            <div class="data-row">
+                <div>
+                    <label class="label">Internal ID:</label>
+                </div>
+                <input id="internalId" type="text" formControlName="internalId"
+                    class="content" placeholder="Internal ID"
+                >
+            </div>
+        </form>       
+    </mat-dialog-content>
+    <div class="helper-text">
+        (*) Mandatory field
+    </div>
+    <mat-dialog-actions>
+        <div class="actions">
+            <button mat-raised-button class="save-button" (click)="save()">Save</button>
+            <button mat-raised-button color="primary" class="close-button" (click)="close()">Close</button>
+        </div> 
+    </mat-dialog-actions>
+</div>
