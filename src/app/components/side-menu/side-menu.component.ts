@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { sideNavOptions } from '../side-nav/side-nav-options';
+import { sideNavOptions } from '../side-menu/side-menu-options';
 
 @Component({
   selector: 'app-side-menu',

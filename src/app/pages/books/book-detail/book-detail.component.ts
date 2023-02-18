@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Book } from 'src/app/entities/Book';
 import { BooksService } from 'src/app/services/books.service';
 
@@ -9,17 +9,21 @@ import { BooksService } from 'src/app/services/books.service';
   styleUrls: ['./book-detail.component.scss']
 })
 export class BookDetailComponent implements OnInit{
-  public book: Book | undefined;
+  public book: Book;
 
-  constructor(private booksSvc: BooksService, private activeRoute: ActivatedRoute){}
+  constructor(
+    private booksSvc: BooksService, 
+    private dialogRef: MatDialogRef<BookDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: Book
+  ) {
+      this.book = data;
+    }
 
   ngOnInit(): void {
-    this.getBookDetails();
   }
 
-  private getBookDetails(){
-    let uuid: string = this.activeRoute.snapshot.params['uuid'];
-    this.book = this.booksSvc.getBookById(uuid)
+  close(): void {
+    this.dialogRef.close();
   }
 
 }

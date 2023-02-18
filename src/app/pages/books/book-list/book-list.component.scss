@@ -5,14 +5,14 @@ table {
     min-width: 500px;
 
     .header-title, .header-author, .header-genre, .header-editorial, .header-bookId, 
-    .header-internalId, .header-details, .header-update, .header-delete{
+    .header-internalId, .header-actions{
         font-size: 22px;
         font-weight: 900;
     }
 
 }
 th.mat-header-cell {
-    text-align: left;
+    text-align: center;
     max-width: 300px;
 }
 

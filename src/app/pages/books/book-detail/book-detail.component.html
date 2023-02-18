@@ -1,1 +1,45 @@
-<p>book-detail works!</p>
+<div class="dialog">
+    <h1 mat-dialog-title>{{book.title}}</h1>
+    <mat-dialog-content class="dialog-content">
+        <div class="label-box">
+            <div class="data-row">
+                <span class="label">Author:</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Genre:</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Editorial:</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Book ID:</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Internal ID:</span>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="data-row">
+                <span class="content">{{book.author}}</span>
+            </div>
+            <div class="data-row">
+                <span class="content">{{book.genre}}</span>
+            </div>
+            <div class="data-row">
+                <span class="content">{{book.editorial}}</span>
+            </div>
+            <div class="data-row">
+                <span class="content">{{book.bookId}}</span>
+            </div>
+            <div class="data-row">
+                <span class="content">{{book.internalId}}</span>
+            </div>
+        </div>
+        
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" class="close-button" (click)="close()">Close</button>
+    </mat-dialog-actions>
+</div>
+

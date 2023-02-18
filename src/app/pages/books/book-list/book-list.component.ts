@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { Book } from 'src/app/entities/Book';
 import { BooksService } from 'src/app/services/books.service';
+import { BookDetailComponent } from '../book-detail/book-detail.component';
 
 @Component({
   selector: 'app-book-list',
@@ -13,7 +14,7 @@ import { BooksService } from 'src/app/services/books.service';
 })
 export class BookListComponent implements OnInit, AfterViewInit {
   public dataSource = new MatTableDataSource<Book>();
-  public displayedColumns = ['title', 'author', 'genre', 'editorial', 'bookId', 'internalId', 'details', 'update', 'delete']
+  public displayedColumns = ['title', 'author', 'genre', 'editorial', 'bookId', 'internalId', 'actions']
 
   @ViewChild(MatSort)
   sort!: MatSort;
@@ -21,7 +22,10 @@ export class BookListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
-  constructor(private booksSvc: BooksService, private router: Router){}
+  constructor(
+    private booksSvc: BooksService, 
+    private dialog: MatDialog
+    ){}
 
   ngOnInit(): void {
     this.getBookList();
@@ -42,9 +46,21 @@ export class BookListComponent implements OnInit, AfterViewInit {
     })
   }
 
-  public bookDetails(uuid: string) {
-    let url: string = `/books/details/${uuid}`;
-    this.router.navigate([url]);
+  public bookDetails(item: Book) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { 
+      uuid: item.uuid,
+      title: item.title,
+      author: item.author,
+      genre: item.genre,
+      editorial: item.editorial,
+      bookId: item.bookId,
+      internalId: item.internalId
+    };
+
+    dialogConfig.width = '500px';
+
+    this.dialog.open(BookDetailComponent, dialogConfig);
   }
   public bookUpdate(uuid: string) {
     

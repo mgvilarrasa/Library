@@ -17,31 +17,32 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
-import {MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from "@angular/material/dialog";
 
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { BooksComponent } from './pages/books/books.component';
 import { UsersComponent } from './pages/users/users.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
 import { BookListComponent } from './pages/books/book-list/book-list.component';
 import { BookDetailComponent } from './pages/books/book-detail/book-detail.component';
+import { BookUpdateComponent } from './pages/books/book-update/book-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    SideNavComponent,
     SideMenuComponent,
     BooksComponent,
     UsersComponent,
     BookingsComponent,
     BookListComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    BookUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +63,8 @@ import { BookDetailComponent } from './pages/books/book-detail/book-detail.compo
     MatTableModule,
     MatSortModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
