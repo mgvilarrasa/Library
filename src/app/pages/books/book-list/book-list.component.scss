@@ -1,3 +1,26 @@
+.header{
+    .create-button{
+        position: absolute;
+        right: 0;
+        margin-right: 1rem;
+        height: 50px;
+        font-size: 24px;
+        font-weight: 600;
+        background-color: #263238;
+        color: #fff;
+    }
+    .create-button:hover{
+        position: absolute;
+        right: 0;
+        margin-right: 1rem;
+        height: 50px;
+        font-size: 24px;
+        font-weight: 600;
+        background-color: #a09e9e;
+        color: #263238;
+    }
+}
+
 table {
     width: 100%;
     overflow-x: auto;
@@ -5,7 +28,7 @@ table {
     min-width: 500px;
 
     .header-title, .header-author, .header-genre, .header-editorial, .header-bookId, 
-    .header-internalId, .header-actions{
+    .header-internalId, .header-actions {
         font-size: 22px;
         font-weight: 900;
     }

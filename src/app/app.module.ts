@@ -20,6 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -31,6 +32,9 @@ import { BookingsComponent } from './pages/bookings/bookings.component';
 import { BookListComponent } from './pages/books/book-list/book-list.component';
 import { BookDetailComponent } from './pages/books/book-detail/book-detail.component';
 import { BookUpdateComponent } from './pages/books/book-update/book-update.component';
+import { BookCreateComponent } from './pages/books/book-create/book-create.component';
+import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
+import { ToastComponent } from './components/dialogs/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,10 @@ import { BookUpdateComponent } from './pages/books/book-update/book-update.compo
     BookingsComponent,
     BookListComponent,
     BookDetailComponent,
-    BookUpdateComponent
+    BookUpdateComponent,
+    BookCreateComponent,
+    ConfirmDialogComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +73,8 @@ import { BookUpdateComponent } from './pages/books/book-update/book-update.compo
     MatSortModule,
     MatInputModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,8 +3,11 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialog/confirm-dialog.component';
 import { Book } from 'src/app/entities/Book';
 import { BooksService } from 'src/app/services/books.service';
+import { UtilsService } from 'src/app/services/utils.service';
+import { BookCreateComponent } from '../book-create/book-create.component';
 import { BookDetailComponent } from '../book-detail/book-detail.component';
 import { BookUpdateComponent } from '../book-update/book-update.component';
 
@@ -24,7 +27,8 @@ export class BookListComponent implements OnInit, AfterViewInit {
   paginator!: MatPaginator;
 
   constructor(
-    private booksSvc: BooksService, 
+    private booksSvc: BooksService,
+    private utilsSvc: UtilsService, 
     private dialog: MatDialog
     ){}
 
@@ -63,6 +67,22 @@ export class BookListComponent implements OnInit, AfterViewInit {
 
     this.dialog.open(BookDetailComponent, dialogConfig);
   }
+
+  public bookCreate(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+
+    this.dialog.open(BookCreateComponent, dialogConfig).afterClosed().subscribe((data) => {
+      if(data === 201){
+        this.utilsSvc.openSnackBar('Book created', true);
+      }
+      else{
+        this.utilsSvc.openSnackBar('Something went wrong. Code: ' + data, false);
+      }
+      this.getBookList();
+    });
+  }
+
   public bookUpdate(item: Book) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { 
@@ -76,11 +96,41 @@ export class BookListComponent implements OnInit, AfterViewInit {
     };
 
     dialogConfig.width = '500px';
-
-    this.dialog.open(BookUpdateComponent, dialogConfig);
+    this.dialog.open(BookUpdateComponent, dialogConfig).afterClosed().subscribe((data) => {
+      if(data === 200){
+        this.utilsSvc.openSnackBar('Book updated', true);
+      }
+      else{
+        this.utilsSvc.openSnackBar('Something went wrong. Code: ' + data, false);
+      }
+      this.getBookList();
+    }); 
   }
-  public bookDelete(uuid: string) {
-    
-  }
+  public bookDelete(item: Book) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.data = {
+      title: 'Delete book this book?',
+      messageBody: item.title
+    }
 
+    this.dialog.open(ConfirmDialogComponent, dialogConfig).afterClosed().subscribe((data) => {
+      if(data === true){
+        this.booksSvc.delete(item.uuid).subscribe((response) => {
+          if(response.status === 200){
+            this.utilsSvc.openSnackBar('Book deleted', true);
+          }
+          else{
+            this.utilsSvc.openSnackBar('Something went wrong. Code: ' + response.status, false);
+          }
+          this.getBookList();
+        },
+        error => {
+          this.utilsSvc.openSnackBar('Something went wrong. Code: ' + 0, false);
+          this.getBookList();
+        }
+      )
+      }
+    })
+  }
 }

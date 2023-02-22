@@ -1,17 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SideMenuComponent } from 'src/app/components/side-menu/side-menu.component';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Book } from 'src/app/entities/Book';
 import { BooksService } from 'src/app/services/books.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
-  selector: 'app-book-update',
-  templateUrl: './book-update.component.html',
-  styleUrls: ['./book-update.component.scss']
+  selector: 'app-book-create',
+  templateUrl: './book-create.component.html',
+  styleUrls: ['./book-create.component.scss']
 })
-export class BookUpdateComponent implements OnInit{
-  public book: Book;
+export class BookCreateComponent implements OnInit{
   public submitted = false;
   public bookForm = this.formBuilder.group({
     title: ['', [
@@ -29,28 +28,14 @@ export class BookUpdateComponent implements OnInit{
   })
 
   constructor(
-    private booksSvc: BooksService, 
+    private booksSvc: BooksService,
+    private utilsSvc: UtilsService,
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<BookUpdateComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: Book
+    private dialogRef: MatDialogRef<BookCreateComponent>
   ) 
-  {
-      this.book = data;
-  }
+  {}
 
   ngOnInit(): void {
-    this.initForm();
-  }
-
-  initForm(): void{
-    this.bookForm.patchValue({
-      title: this.book.title,
-      author: this.book.author,
-      genre: this.book.genre,
-      editorial: this.book.editorial,
-      bookId: this.book.bookId,
-      internalId: this.book.internalId
-    });
   }
 
   get bookFormControl() {
@@ -60,8 +45,8 @@ export class BookUpdateComponent implements OnInit{
   save(): void{
     this.submitted = true;
     if(this.bookForm.valid){
-      let updatedBook = {
-        uuid: this.book.uuid,
+      let newBook = {
+        uuid: this.utilsSvc.generateUuid(),
         title: this.bookForm.get('title')?.value,
         author: this.bookForm.get('author')?.value,
         genre: this.bookForm.get('genre')?.value,
@@ -69,8 +54,9 @@ export class BookUpdateComponent implements OnInit{
         bookId: this.bookForm.get('bookId')?.value,
         internalId: this.bookForm.get('internalId')?.value
       } as Book;
-      this.booksSvc.update(updatedBook).subscribe(
+      this.booksSvc.create(newBook).subscribe(
         (data) => {
+          console.log(data.status);
           this.dialogRef.close(data.status);
         },
         error => this.dialogRef.close(0)
@@ -81,4 +67,5 @@ export class BookUpdateComponent implements OnInit{
   close(): void {
     this.dialogRef.close();
   }
+
 }

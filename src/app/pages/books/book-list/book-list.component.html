@@ -1,8 +1,9 @@
-<div>
+<div class="header">
     <label class="filter-label">Filter by Keyword: </label>
     <mat-form-field>
       <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Filter">
     </mat-form-field>
+    <button mat-button class="create-button" (click)="bookCreate()">+ Create Book</button>
 </div>
 <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">
@@ -44,7 +45,7 @@
                 </button>
             </span>
             <span>
-                <button mat-icon-button color="warn" (click)="bookDelete(element.uuid)">
+                <button mat-icon-button color="warn" (click)="bookDelete(element)">
                     <mat-icon class="mat-18">delete</mat-icon>
                 </button>
             </span>
@@ -53,5 +54,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]">
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 15]">
 </mat-paginator>
