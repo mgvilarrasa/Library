@@ -4,21 +4,21 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialog/confirm-dialog.component';
-import { Book } from 'src/app/entities/Book';
-import { BooksService } from 'src/app/services/books.service';
+import { User } from 'src/app/entities/User';
+import { UsersService } from 'src/app/services/users.service';
 import { UtilsService } from 'src/app/services/utils.service';
-import { BookCreateComponent } from '../book-create/book-create.component';
-import { BookDetailComponent } from '../book-detail/book-detail.component';
-import { BookUpdateComponent } from '../book-update/book-update.component';
+import { UserCreateComponent } from '../user-create/user-create.component';
+import { UserDetailsComponent } from '../user-details/user-details.component';
+import { UserUpdateComponent } from '../user-update/user-update.component';
 
 @Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.scss']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss']
 })
-export class BookListComponent implements OnInit, AfterViewInit {
-  public dataSource = new MatTableDataSource<Book>();
-  public displayedColumns = ['title', 'author', 'genre', 'editorial', 'bookId', 'internalId', 'actions']
+export class UserListComponent implements OnInit, AfterViewInit{
+  public dataSource = new MatTableDataSource<User>();
+  public displayedColumns = ['name', 'lastName', 'lastName2', 'email', 'internalId', 'actions']
 
   @ViewChild(MatSort)
   sort!: MatSort;
@@ -27,13 +27,13 @@ export class BookListComponent implements OnInit, AfterViewInit {
   paginator!: MatPaginator;
 
   constructor(
-    private booksSvc: BooksService,
+    private usersSvc: UsersService,
     private utilsSvc: UtilsService, 
     private dialog: MatDialog
     ){}
 
   ngOnInit(): void {
-    this.getBookList();
+    this.getUserList();
   }
 
   ngAfterViewInit(): void{
@@ -45,60 +45,58 @@ export class BookListComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  public getBookList() {
-    this.booksSvc.getBooks().subscribe(res => {
-      this.dataSource.data = res as Book[];
+  public getUserList() {
+    this.usersSvc.getUsers().subscribe(res => {
+      this.dataSource.data = res as User[];
     })
   }
 
-  public bookDetails(item: Book) {
+  public userDetails(item: User) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { 
       uuid: item.uuid,
-      title: item.title,
-      author: item.author,
-      genre: item.genre,
-      editorial: item.editorial,
-      bookId: item.bookId,
+      name: item.name,
+      lastName: item.lastName,
+      lastName2: item.lastName2,
+      email: item.email,
       internalId: item.internalId
     };
 
     dialogConfig.width = '500px';
 
-    this.dialog.open(BookDetailComponent, dialogConfig);
+    this.dialog.open(UserDetailsComponent, dialogConfig);
   }
 
-  public bookCreate(){
+  public userCreate(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px';
 
-    this.dialog.open(BookCreateComponent, dialogConfig).afterClosed().subscribe((data) => {
+    this.dialog.open(UserCreateComponent, dialogConfig).afterClosed().subscribe((data) => {
       if(data){
         if(data === 201){
-          this.utilsSvc.openSnackBar('Book created', true);
+          this.utilsSvc.openSnackBar('User created', true);
         }
         else{
           this.utilsSvc.openSnackBar('Something went wrong. Code: ' + data, false);
         }
       }
-      this.getBookList();
+      this.getUserList();
     });
   }
 
-  public bookUpdate(item: Book) {
+  public userUpdate(item: User) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { 
       uuid: item.uuid,
-      title: item.title,
-      author: item.author,
-      genre: item.genre,
-      editorial: item.editorial,
-      bookId: item.bookId,
+      name: item.name,
+      lastName: item.lastName,
+      lastName2: item.lastName2,
+      email: item.email,
       internalId: item.internalId
     };
 
     dialogConfig.width = '500px';
-    this.dialog.open(BookUpdateComponent, dialogConfig).afterClosed().subscribe((data) => {
+    this.dialog.open(UserUpdateComponent, dialogConfig).afterClosed().subscribe((data) => {
       if(data){
         if(data === 200){
           this.utilsSvc.openSnackBar('Book updated', true);
@@ -106,34 +104,33 @@ export class BookListComponent implements OnInit, AfterViewInit {
         else{
           this.utilsSvc.openSnackBar('Something went wrong. Code: ' + data, false);
         }
-      }
-      this.getBookList();
+      }  
+      this.getUserList();
     }); 
   }
-  public bookDelete(item: Book) {
+  public userDelete(item: User) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px';
     dialogConfig.data = {
-      title: 'Do you want to delete this book?',
-      messageBody: item.title
+      title: 'Do you want to delete this user?',
+      messageBody: item.name + ' ' + item.lastName + ' ' + item.lastName2 + ' with email ' + item.email
     }
 
     this.dialog.open(ConfirmDialogComponent, dialogConfig).afterClosed().subscribe((data) => {
       if(data === true){
-        this.booksSvc.delete(item.uuid).subscribe((response) => {
+        this.usersSvc.delete(item.uuid).subscribe((response) => {
           if(response.status === 200){
-            this.utilsSvc.openSnackBar('Book deleted', true);
+            this.utilsSvc.openSnackBar('User deleted', true);
           }
           else{
             this.utilsSvc.openSnackBar('Something went wrong. Code: ' + response.status, false);
           }
-          this.getBookList();
+          this.getUserList();
         },
         error => {
           this.utilsSvc.openSnackBar('Something went wrong. Code: ' + 0, false);
-          this.getBookList();
-        }
-      )
+          this.getUserList();
+        })
       }
     })
   }

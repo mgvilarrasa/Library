@@ -56,7 +56,6 @@ export class BookCreateComponent implements OnInit{
       } as Book;
       this.booksSvc.create(newBook).subscribe(
         (data) => {
-          console.log(data.status);
           this.dialogRef.close(data.status);
         },
         error => this.dialogRef.close(0)

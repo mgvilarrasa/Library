@@ -1,0 +1,45 @@
+<div class="dialog">
+    <h1 mat-dialog-title>User details</h1>
+    <mat-dialog-content class="dialog-content">
+        <div class="label-box">
+            <div class="data-row">
+                <span class="label">Name:</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Last Name:</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Second Last Name:</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Email:</span>
+            </div>
+            <div class="data-row">
+                <span class="label">Internal ID:</span>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="data-row">
+                <span class="content">{{user.name}}</span>
+            </div>
+            <div class="data-row">
+                <span class="content">{{user.lastName}}</span>
+            </div>
+            <div class="data-row">
+                <span class="content">{{user.lastName2}}</span>
+            </div>
+            <div class="data-row">
+                <span class="content">{{user.email}}</span>
+            </div>
+            <div class="data-row">
+                <span class="content">{{user.internalId}}</span>
+            </div>
+        </div>
+        
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" class="close-button" (click)="close()">Close</button>
+    </mat-dialog-actions>
+</div>
+

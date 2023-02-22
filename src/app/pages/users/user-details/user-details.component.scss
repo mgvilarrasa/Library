@@ -1,0 +1,39 @@
+.dialog {
+    border-radius: 30%;
+
+    h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .dialog-content{
+        display: flex;
+        border-top: 3px solid #000000;
+        align-items: center;
+    
+        .label-box, .content-box{
+            flex: 50%;
+        }
+    }
+    .data-row {
+        margin-top: 1rem;
+    
+        .label{
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .content {
+            margin-left: 2px;
+            font-size: 20px;
+        }
+    }
+
+    .close-button {
+        position: absolute;
+        right:    0;
+        bottom:   0;
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+    }
+}

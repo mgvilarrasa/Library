@@ -34,6 +34,10 @@ import { BookDetailComponent } from './pages/books/book-detail/book-detail.compo
 import { BookUpdateComponent } from './pages/books/book-update/book-update.component';
 import { BookCreateComponent } from './pages/books/book-create/book-create.component';
 import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
+import { UserListComponent } from './pages/users/user-list/user-list.component';
+import { UserCreateComponent } from './pages/users/user-create/user-create.component';
+import { UserUpdateComponent } from './pages/users/user-update/user-update.component';
+import { UserDetailsComponent } from './pages/users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,10 @@ import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/conf
     BookUpdateComponent,
     BookCreateComponent,
     ConfirmDialogComponent,
+    UserListComponent,
+    UserCreateComponent,
+    UserUpdateComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
