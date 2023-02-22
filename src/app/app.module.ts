@@ -34,7 +34,6 @@ import { BookDetailComponent } from './pages/books/book-detail/book-detail.compo
 import { BookUpdateComponent } from './pages/books/book-update/book-update.component';
 import { BookCreateComponent } from './pages/books/book-create/book-create.component';
 import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
-import { ToastComponent } from './components/dialogs/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +49,6 @@ import { ToastComponent } from './components/dialogs/toast/toast.component';
     BookUpdateComponent,
     BookCreateComponent,
     ConfirmDialogComponent,
-    ToastComponent
   ],
   imports: [
     BrowserModule,
