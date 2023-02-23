@@ -71,9 +71,11 @@ export class UserUpdateComponent implements OnInit{
       } as User;
       this.usersSvc.update(updatedUser).subscribe(
         (data) => {
-          this.dialogRef.close(data.status);
+          this.dialogRef.close(data);
         },
-        error => this.dialogRef.close(0)
+        error => {
+          this.dialogRef.close(error)
+        }
       );
     }
   }

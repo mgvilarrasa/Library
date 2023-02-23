@@ -71,9 +71,9 @@ export class BookUpdateComponent implements OnInit{
       } as Book;
       this.booksSvc.update(updatedBook).subscribe(
         (data) => {
-          this.dialogRef.close(data.status);
+          this.dialogRef.close(data);
         },
-        error => this.dialogRef.close(0)
+        error => this.dialogRef.close(error)
       );
     }
   }

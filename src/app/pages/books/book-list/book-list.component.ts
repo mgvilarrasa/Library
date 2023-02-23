@@ -74,11 +74,11 @@ export class BookListComponent implements OnInit, AfterViewInit {
 
     this.dialog.open(BookCreateComponent, dialogConfig).afterClosed().subscribe((data) => {
       if(data){
-        if(data === 201){
+        if(data.status === 201){
           this.utilsSvc.openSnackBar('Book created', true);
         }
         else{
-          this.utilsSvc.openSnackBar('Something went wrong. Code: ' + data, false);
+          this.utilsSvc.openSnackBar('Something went wrong. Code: ' + data.status  + ' - ' + data.error.message, false);
         }
       }
       this.getBookList();
@@ -100,11 +100,11 @@ export class BookListComponent implements OnInit, AfterViewInit {
     dialogConfig.width = '500px';
     this.dialog.open(BookUpdateComponent, dialogConfig).afterClosed().subscribe((data) => {
       if(data){
-        if(data === 200){
+        if(data.status === 200){
           this.utilsSvc.openSnackBar('Book updated', true);
         }
         else{
-          this.utilsSvc.openSnackBar('Something went wrong. Code: ' + data, false);
+          this.utilsSvc.openSnackBar('Something went wrong. Code: ' + data.status  + ' - ' + data.error.message, false);
         }
       }
       this.getBookList();
@@ -125,12 +125,12 @@ export class BookListComponent implements OnInit, AfterViewInit {
             this.utilsSvc.openSnackBar('Book deleted', true);
           }
           else{
-            this.utilsSvc.openSnackBar('Something went wrong. Code: ' + response.status, false);
+            this.utilsSvc.openSnackBar('Something went wrong. Code: ' + response.status + ' - ' + response.error.message, false);
           }
           this.getBookList();
         },
         error => {
-          this.utilsSvc.openSnackBar('Something went wrong. Code: ' + 0, false);
+          this.utilsSvc.openSnackBar('Something went wrong. Code: ' + error.status + ' - ' + error.error.message, false);
           this.getBookList();
         }
       )

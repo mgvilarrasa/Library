@@ -58,9 +58,9 @@ export class UserCreateComponent implements OnInit{
       } as User;
       this.userSvc.create(newUser).subscribe(
         (data) => {
-          this.dialogRef.close(data.status);
+          this.dialogRef.close(data);
         },
-        error => this.dialogRef.close(0)
+        error => this.dialogRef.close(error)
       );
     }
   }
