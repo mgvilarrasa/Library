@@ -1,5 +1,7 @@
 <div class="dialog">
-    <h1 mat-dialog-title>Update Book: {{book.title}}</h1>
+    <div class="dialog-header">
+        <h1 mat-dialog-title>Update Book: {{book.title}}</h1>
+    </div>
     <mat-dialog-content class="dialog-content">
         <form [formGroup]="bookForm" (ngSubmit)="save()">
             <div class="data-row">

@@ -30,13 +30,28 @@
         <th mat-header-cell *matHeaderCellDef class="header-internalId">Internal ID</th>
         <td mat-cell *matCellDef="let element">{{element.internalId}}</td>
     </ng-container>
-
+    <ng-container matColumnDef="booked">
+        <th mat-header-cell *matHeaderCellDef class="header-booked">Booked</th>
+        <td mat-cell *matCellDef="let element" class="center-cell">
+            <div *ngIf="element.bookingId != null; else notBooked">
+                <mat-icon color="warn">bookmark</mat-icon>
+            </div>
+            <ng-template #notBooked>
+                <mat-icon color="primary">bookmark_border</mat-icon>
+            </ng-template>
+        </td>
+    </ng-container>
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef class="header-actions">Actions</th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element" class="center-cell">
             <span>
                 <button mat-icon-button color="primary" (click)="bookDetails(element)">
                     <mat-icon class="mat-18">visibility</mat-icon>
+                </button>
+            </span>
+            <span>
+                <button mat-icon-button color="primary" (click)="createBooking(element)">
+                    <mat-icon class="mat-18">bookmark</mat-icon>
                 </button>
             </span>
             <span>

@@ -7,6 +7,7 @@ import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialo
 import { Book } from 'src/app/entities/Book';
 import { BooksService } from 'src/app/services/books.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { BookingCreateComponent } from '../../bookings/booking-create/booking-create.component';
 import { BookCreateComponent } from '../book-create/book-create.component';
 import { BookDetailComponent } from '../book-detail/book-detail.component';
 import { BookUpdateComponent } from '../book-update/book-update.component';
@@ -18,7 +19,7 @@ import { BookUpdateComponent } from '../book-update/book-update.component';
 })
 export class BookListComponent implements OnInit, AfterViewInit {
   public dataSource = new MatTableDataSource<Book>();
-  public displayedColumns = ['title', 'author', 'genre', 'editorial', 'bookId', 'internalId', 'actions']
+  public displayedColumns = ['title', 'author', 'genre', 'editorial', 'bookId', 'internalId', 'booked', 'actions']
 
   @ViewChild(MatSort)
   sort!: MatSort;
@@ -60,7 +61,8 @@ export class BookListComponent implements OnInit, AfterViewInit {
       genre: item.genre,
       editorial: item.editorial,
       bookId: item.bookId,
-      internalId: item.internalId
+      internalId: item.internalId,
+      bookingId: item.bookingId
     };
 
     dialogConfig.width = '500px';
@@ -83,6 +85,36 @@ export class BookListComponent implements OnInit, AfterViewInit {
       }
       this.getBookList();
     });
+  }
+
+  public createBooking(item: Book) {
+    if(item.bookingId == null){
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.width = '700px';
+      dialogConfig.data = {
+        uuid: item.uuid,
+        title: item.title,
+        author: item.author,
+        genre: item.genre,
+        editorial: item.editorial,
+        bookId: item.bookId,
+        internalId: item.internalId
+      };
+
+      this.dialog.open(BookingCreateComponent, dialogConfig).afterClosed().subscribe((data) => {
+        if(data){
+          if(data.status === 201){
+            this.utilsSvc.openSnackBar('Booking created', true);
+          }
+          else{
+            this.utilsSvc.openSnackBar('Something went wrong. Code: ' + data.status  + ' - ' + data.error.message, false);
+          }
+        }
+        this.getBookList();
+      })
+    } else{
+      this.utilsSvc.openSnackBar('Book already booked', false);
+    }
   }
 
   public bookUpdate(item: Book) {

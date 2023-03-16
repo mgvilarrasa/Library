@@ -6,4 +6,5 @@ export interface Book {
     editorial: string;
     bookId: string;
     internalId: string;
+    bookingId: string;
 }

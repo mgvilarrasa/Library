@@ -23,6 +23,17 @@
         .data-row {
             margin-top: 1rem;
             align-items: center;
+
+            .user-select {
+                width: 500px;
+            }
+
+            .start-date-picker {
+                width: 500px;
+            }
+            .end-date-picker {
+                width: 500px;
+            }
         
             .label{
                 font-size: 20px;

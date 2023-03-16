@@ -1,5 +1,50 @@
 <h1>HOME</h1>
 <p></p>
 <div class="content">
-    Here comes content
+    <div class="info-cards">
+        <mat-card class="info-card">
+            <mat-card-header>
+                <mat-card-title>Current Books</mat-card-title>
+                <mat-card-subtitle>
+                    Current Books Registered
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                {{totalBooks}}
+            </mat-card-content>
+        </mat-card> 
+        <mat-card class="info-card">
+            <mat-card-header>
+                <mat-card-title>Current Users</mat-card-title>
+                <mat-card-subtitle>
+                    Current Users Registered
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                {{totalUsers}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="info-card">
+            <mat-card-header>
+                <mat-card-title>Current Active Bookings</mat-card-title>
+                <mat-card-subtitle>
+                    Current Bookings not returned
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                {{totalBookings}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="info-card">
+            <mat-card-header>
+                <mat-card-title>Total Bookings Performed</mat-card-title>
+                <mat-card-subtitle>
+                    All time bookings registered
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                {{totalBookings}}
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>

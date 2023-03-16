@@ -28,9 +28,27 @@ table {
     min-width: 500px;
 
     .header-title, .header-author, .header-genre, .header-editorial, .header-bookId, 
-    .header-internalId, .header-actions {
+    .header-internalId {
         font-size: 22px;
         font-weight: 900;
+    }
+
+    .header-booked {
+        font-size: 22px;
+        font-weight: 900;
+        text-align: center;
+        width: 200px;
+    }
+
+    .header-actions {
+        font-size: 22px;
+        font-weight: 900;
+        text-align: center;
+        width: 250px;
+    }
+
+    .center-cell {
+        text-align: center;
     }
 
 }

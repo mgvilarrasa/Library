@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +21,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -38,6 +42,9 @@ import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { UserCreateComponent } from './pages/users/user-create/user-create.component';
 import { UserUpdateComponent } from './pages/users/user-update/user-update.component';
 import { UserDetailsComponent } from './pages/users/user-details/user-details.component';
+import { BookingListComponent } from './pages/bookings/booking-list/booking-list.component';
+import { BookingCreateComponent } from './pages/bookings/booking-create/booking-create.component';
+import { BookingUpdateComponent } from './pages/bookings/booking-update/booking-update.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +64,9 @@ import { UserDetailsComponent } from './pages/users/user-details/user-details.co
     UserCreateComponent,
     UserUpdateComponent,
     UserDetailsComponent,
+    BookingListComponent,
+    BookingCreateComponent,
+    BookingUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +74,7 @@ import { UserDetailsComponent } from './pages/users/user-details/user-details.co
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
 
     MatToolbarModule,
     MatIconModule,
@@ -80,7 +91,11 @@ import { UserDetailsComponent } from './pages/users/user-details/user-details.co
     MatInputModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,11 +4,16 @@
     h1 {
         font-size: 30px;
         text-align: center;
+        color: #fff;
+    }
+
+    .dialog-header {
+        background-color: #263238;
+        border-bottom: 3px solid #000000;
     }
 
     .dialog-content{
         display: flex;
-        border-top: 3px solid #000000;
         align-items: center;
     
         .label-box, .content-box{
@@ -27,6 +32,13 @@
             margin-left: 2px;
             font-size: 20px;
         }
+    }
+
+    .booking-details {
+        margin-top: 10px;
+        margin-left: 25px;
+        font-size: 16px;
+        font-style: italic;
     }
 
     .close-button {

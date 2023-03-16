@@ -1,5 +1,7 @@
 <div class="dialog">
-    <h1 mat-dialog-title>Update user: {{user.name}} {{user.lastName}} {{user.lastName2}}</h1>
+    <div class="dialog-header">
+        <h1 mat-dialog-title>Update user: {{user.name}} {{user.lastName}} {{user.lastName2}}</h1>
+    </div>
     <mat-dialog-content class="dialog-content">
         <form [formGroup]="userForm" (ngSubmit)="save()">
             <div class="data-row">

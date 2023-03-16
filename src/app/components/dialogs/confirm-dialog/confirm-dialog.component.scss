@@ -1,20 +1,26 @@
-h1 {
-    margin-top: 1rem;
-    font-size: 30px;
-    text-align: center;
-}
-
-.dialog-content {
-    border-top: 3px solid #000000;
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 20px;
-}
-
-.actions {
-    position: absolute;
-    right:    0;
-    bottom:   0;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+.dialog {
+    h1 {
+        font-size: 30px;
+        text-align: center;
+        color: #fff;
+    }
+    
+    .dialog-header {
+        background-color: #263238;
+        border-bottom: 3px solid #000000;
+    }
+    
+    .dialog-content {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 20px;
+    }
+    
+    .actions {
+        position: absolute;
+        right:    0;
+        bottom:   0;
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+    }
 }

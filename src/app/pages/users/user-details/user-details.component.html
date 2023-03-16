@@ -1,5 +1,7 @@
 <div class="dialog">
-    <h1 mat-dialog-title>User details</h1>
+    <div class="dialog-header">
+        <h1 mat-dialog-title>User details</h1>
+    </div>
     <mat-dialog-content class="dialog-content">
         <div class="label-box">
             <div class="data-row">
@@ -37,7 +39,12 @@
         </div>
         
     </mat-dialog-content>
-    
+    <div *ngIf="bookings.length > 0">
+        <span class="booking-section">Active Bookings:</span>
+        <div *ngFor="let item of bookings">
+            <span class="booking-details">{{item.bookTitle}} ({{item.bookInternalId}})</span>
+        </div>  
+    </div>
     <mat-dialog-actions>
         <button mat-raised-button color="primary" class="close-button" (click)="close()">Close</button>
     </mat-dialog-actions>

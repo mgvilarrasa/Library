@@ -1,5 +1,7 @@
 <div class="dialog">
-    <h1 mat-dialog-title>{{book.title}}</h1>
+    <div class="dialog-header">
+        <h1 mat-dialog-title>{{book.title}}</h1>
+    </div>
     <mat-dialog-content class="dialog-content">
         <div class="label-box">
             <div class="data-row">
@@ -35,9 +37,10 @@
                 <span class="content">{{book.internalId}}</span>
             </div>
         </div>
-        
     </mat-dialog-content>
-    
+    <div *ngIf="booking != null">
+        <span class="booking-details">Booked by: {{booking.userName}}</span>
+    </div>
     <mat-dialog-actions>
         <button mat-raised-button color="primary" class="close-button" (click)="close()">Close</button>
     </mat-dialog-actions>
