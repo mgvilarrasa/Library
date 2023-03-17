@@ -32,7 +32,7 @@
                 </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                {{totalBookings}}
+                {{totalPendingBookings}}
             </mat-card-content>
         </mat-card>
         <mat-card class="info-card">
@@ -44,6 +44,17 @@
             </mat-card-header>
             <mat-card-content>
                 {{totalBookings}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="delayed-card">
+            <mat-card-header>
+                <mat-card-title>Total Bookings Delayed</mat-card-title>
+                <mat-card-subtitle>
+                    Bookings not returned and delayed
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                {{totalDelayedBookings}}
             </mat-card-content>
         </mat-card>
     </div>
