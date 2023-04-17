@@ -3,6 +3,7 @@
         <h1 mat-dialog-title>{{book.title}}</h1>
     </div>
     <mat-dialog-content class="dialog-content">
+        <!--
         <div class="label-box">
             <div class="data-row">
                 <span class="label">Author:</span>
@@ -35,6 +36,67 @@
             </div>
             <div class="data-row">
                 <span class="content">{{book.internalId}}</span>
+            </div>
+        </div>
+    -->
+        <div class="details">
+            <div class="label-box">
+                <div class="data-row">
+                    <span class="label">Author:</span>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="data-row">
+                    <span class="content">{{book.author}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="label-box">
+                <div class="data-row">
+                    <span class="label">Genre:</span>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="data-row">
+                    <span class="content">{{book.genre}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="label-box">
+                <div class="data-row">
+                    <span class="label">Editorial:</span>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="data-row">
+                    <span class="content">{{book.editorial}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="label-box">
+                <div class="data-row">
+                    <span class="label">Book ID:</span>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="data-row">
+                    <span class="content">{{book.bookId}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="label-box">
+                <div class="data-row">
+                    <span class="label">Internal ID:</span>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="data-row">
+                    <span class="content">{{book.internalId}}</span>
+                </div>
             </div>
         </div>
     </mat-dialog-content>
